@@ -118,7 +118,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-
+STATIC_URL="static/"
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 # Configures the staticfiles directory to serve
 # static files from /static/ on our deployment
