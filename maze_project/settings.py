@@ -35,14 +35,18 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    "daphne",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "reactpy_django",
     'maze_app'
 ]
+
+ASGI_APPLICATION = "maze_project.asgi.application"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

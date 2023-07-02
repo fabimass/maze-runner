@@ -1,9 +1,13 @@
+{% load reactpy %}
+
 <!DOCTYPE html>
 <html>
   <head>
     <title>Maze Solver</title>
   </head>
   <body>
-    <h1>Maze Solver</h1>
+    <div class="root">
+        {% component "maze_app.components.app" %}
+    </div>
   </body>
 </html>
