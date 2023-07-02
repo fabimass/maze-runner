@@ -26,6 +26,5 @@
       "src": "/(.*)",
       "dest": "maze_project/wsgi.py"
     }
-  ],
-  "outputDirectory": "staticfiles"
+  ]
 }
