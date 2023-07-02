@@ -14,13 +14,5 @@
         "src": "/(.*)",
         "dest": "maze_project/wsgi.py"
       }
-    ],
-    "env": {
-      "DJANGO_SETTINGS_MODULE": "maze_project.settings"
-    },
-    "build": {
-      "env": {
-        "VERCEL_BUILD_COMMAND": "python manage.py collectstatic --noinput"
-      }
-    }
+    ]
 }
