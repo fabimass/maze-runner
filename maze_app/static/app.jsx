@@ -1,7 +1,11 @@
+
 const App = () => {
 
-    return <div>Hello!</div>
+    return <div>
+        <div>Hello!</div>
+        <Blabla />
+    </div>
 
 }
 
-ReactDOM.render(<App />, document.querySelector("#app"))
+ReactDOM.render(<App />, document.querySelector("#app"));
