@@ -1,13 +1,14 @@
-{% load reactpy %}
 {% load static %}
 <!DOCTYPE html>
 <html>
   <head>
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     <title>Maze Solver</title>
   </head>
   <body>
-    <div class="root">
-        {% component "maze_app.components.app" %}
-    </div>
+    <div id="app"></div>
+    <script src="{% static 'app.jsx' %}" type="text/babel"></script>
   </body>
 </html>
