@@ -1,7 +1,8 @@
 const App = () => {
 
+    const [mazeDesign, setMazeDesign] = React.useState();
     const [mazeSolution, setMazeSolution] = React.useState();
-
+    
     const runMaze = () => {
         
         fetch('/run', {
@@ -11,7 +12,7 @@ const App = () => {
                 'X-CSRFToken': CSRF_TOKEN
             },
             body: JSON.stringify({
-                maze: "..."
+                maze: mazeDesign
             }),
         })
         .then(response => {
@@ -36,7 +37,7 @@ const App = () => {
     }
 
     return <div>
-        <textarea></textarea>
+        <textarea onChange={(event) => setMazeDesign(event.target.value)}></textarea>
         <button onClick={runMaze}>Run Maze</button>
         <Blabla />
         <div>{mazeSolution}</div>
