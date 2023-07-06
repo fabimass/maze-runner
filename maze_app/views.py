@@ -6,7 +6,6 @@ def index(request):
 
 def run(request):
     
-
     return(JsonResponse({
         "result": "..."
         }, 
