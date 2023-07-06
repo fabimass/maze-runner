@@ -1,7 +1,9 @@
-
 const App = () => {
 
+    const [mazeSolution, setMazeSolution] = React.useState();
+
     const runMaze = () => {
+        
         fetch('/run', {
             method: 'POST',
             headers: { 
@@ -24,7 +26,7 @@ const App = () => {
         })
         .then(data => {
             // Handle the data received from the server
-            console.log(data);
+            setMazeSolution(data.result);
         })
         .catch(error => {
             // Handle any errors that occurred during the request
@@ -37,6 +39,7 @@ const App = () => {
         <textarea></textarea>
         <button onClick={runMaze}>Run Maze</button>
         <Blabla />
+        <div>{mazeSolution}</div>
     </div>
 
 }
