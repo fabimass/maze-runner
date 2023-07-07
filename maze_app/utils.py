@@ -79,21 +79,30 @@ class Maze():
 
     def print(self):
         solution = self.solution[1] if self.solution is not None else None
+        result = ''
         print()
         for i, row in enumerate(self.walls):
+            if i > 0:
+                result += '\n'
             for j, col in enumerate(row):
                 if col:
                     print("█", end="")
+                    result += '#'
                 elif (i, j) == self.start:
                     print("A", end="")
+                    result += 'A'
                 elif (i, j) == self.goal:
                     print("B", end="")
+                    result += 'B'
                 elif solution is not None and (i, j) in solution:
                     print("*", end="")
+                    result += '*'
                 else:
                     print(" ", end="")
+                    result += ' '
             print()
         print()
+        return result
 
 
     def neighbors(self, state):
@@ -158,16 +167,3 @@ class Maze():
                 if not frontier.contains_state(state) and state not in self.explored:
                     child = Node(state=state, parent=node, action=action)
                     frontier.add(child)
-
-
-    
-
-#m = Maze(sys.argv[1])
-#print("Maze:")
-#m.print()
-#print("Solving...")
-#m.solve()
-#print("States Explored:", m.num_explored)
-#print("Solution:")
-#m.print()
-#m.output_image("maze.png", show_explored=True)
