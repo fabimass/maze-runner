@@ -27,6 +27,8 @@ const App = () => {
         })
         .then(data => {
             // Handle the data received from the server
+            console.log("Maze solution:");
+            console.log(data.result);
             setMazeSolution(data.result);
         })
         .catch(error => {
@@ -39,8 +41,7 @@ const App = () => {
     return <div>
         <textarea onChange={(event) => setMazeDesign(event.target.value)}></textarea>
         <button onClick={runMaze}>Run Maze</button>
-        <Blabla />
-        <div>{mazeSolution}</div>
+        <MazePrint content={mazeSolution} />
     </div>
 
 }
