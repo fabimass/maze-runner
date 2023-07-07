@@ -2,7 +2,11 @@ const App = () => {
 
     const [mazeDesign, setMazeDesign] = React.useState();
     const [mazeSolution, setMazeSolution] = React.useState();
+    const [showModal, setShowModal] = React.useState(false);
     
+    const closeModal = () => setShowModal(false);
+    const openModal = () => setShowModal(true);
+
     const runMaze = () => {
         
         fetch('/run', {
@@ -30,6 +34,7 @@ const App = () => {
             console.log("Maze solution:");
             console.log(data.result);
             setMazeSolution(data.result);
+            openModal();
         })
         .catch(error => {
             // Handle any errors that occurred during the request
@@ -41,7 +46,8 @@ const App = () => {
     return <div>
         <textarea onChange={(event) => setMazeDesign(event.target.value)}></textarea>
         <button onClick={runMaze}>Run Maze</button>
-        <MazePrint content={mazeSolution} />
+        { showModal ? <Modal content={mazeSolution} closeModal={closeModal} /> : null }
+        
     </div>
 
 }
