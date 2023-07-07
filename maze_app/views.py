@@ -22,7 +22,7 @@ def run(request):
     maze.print()
 
     return(JsonResponse({
-        "result": maze.stringify(),
+        "result": maze.stringify(show_explored=True),
         "states_explored": maze.num_explored
         }, 
         status=200))
