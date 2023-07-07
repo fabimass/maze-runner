@@ -19,10 +19,10 @@ def run(request):
 
     print("States Explored:", maze.num_explored)
     print("Solution:")
-    solution = maze.print()
+    maze.print()
 
     return(JsonResponse({
-        "result": solution,
+        "result": maze.stringify(),
         "states_explored": maze.num_explored
         }, 
         status=200))

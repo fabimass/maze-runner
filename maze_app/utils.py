@@ -79,31 +79,40 @@ class Maze():
 
     def print(self):
         solution = self.solution[1] if self.solution is not None else None
-        result = ''
         print()
+        for i, row in enumerate(self.walls):
+            for j, col in enumerate(row):
+                if col:
+                    print("█", end="")
+                elif (i, j) == self.start:
+                    print("A", end="")
+                elif (i, j) == self.goal:
+                    print("B", end="")
+                elif solution is not None and (i, j) in solution:
+                    print("*", end="")
+                else:
+                    print(" ", end="")
+            print()
+        print()
+
+    def stringify(self):
+        solution = self.solution[1] if self.solution is not None else None
+        result = ''
         for i, row in enumerate(self.walls):
             if i > 0:
                 result += '\n'
             for j, col in enumerate(row):
                 if col:
-                    print("█", end="")
                     result += '#'
                 elif (i, j) == self.start:
-                    print("A", end="")
                     result += 'A'
                 elif (i, j) == self.goal:
-                    print("B", end="")
                     result += 'B'
                 elif solution is not None and (i, j) in solution:
-                    print("*", end="")
                     result += '*'
                 else:
-                    print(" ", end="")
                     result += ' '
-            print()
-        print()
         return result
-
 
     def neighbors(self, state):
         row, col = state
