@@ -43,9 +43,16 @@ const App = () => {
 
     }
 
-    return <div>
-        <textarea onChange={(event) => setMazeDesign(event.target.value)}></textarea>
-        <button onClick={runMaze}>Run Maze</button>
+    return <div className="bg-slate-700 h-screen flex flex-col justify-center items-center">
+        <span className="text-6xl mb-5" style={{fontFamily: "Courier"}}>DESIGN YOUR MAZE</span>
+        <textarea className="w-[50%] h-[50%] bg-slate-900 text-white p-2 border-2" onChange={(event) => setMazeDesign(event.target.value)}></textarea>
+        <button onClick={runMaze} style={{fontFamily: "Courier"}} className="m-5 py-2 px-5 bg-slate-900 text-white text-xl rounded-full">
+            <div className="flex">
+            <img src={"/static/runner-white.png"} alt="runner" width={28} height={28} className="mr-1 text-white"/>
+            <span>RUN</span>
+            </div>
+        </button>
+        
         { showModal ? <Modal content={mazeSolution} closeModal={closeModal} /> : null }
         
     </div>
