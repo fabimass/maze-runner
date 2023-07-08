@@ -1,4 +1,20 @@
 import sys
+import re
+
+
+def check_string_pattern(string, pattern):
+    # Escape special characters in the pattern
+    escaped_pattern = re.escape(pattern)
+    
+    # Create the regular expression pattern
+    regex_pattern = f'^[{escaped_pattern}]+$'
+    
+    # Check if the string matches the pattern
+    if re.match(regex_pattern, string):
+        return True
+    else:
+        return False
+
 
 class Node():
     def __init__(self, state, parent, action):
@@ -39,6 +55,7 @@ class QueueFrontier(StackFrontier):
             self.frontier = self.frontier[1:]
             return node
 
+
 class Maze():
 
     def __init__(self, contents):
@@ -48,6 +65,12 @@ class Maze():
             raise Exception("maze must have exactly one start point")
         if contents.count("B") != 1:
             raise Exception("maze must have exactly one goal")
+        
+        # Validate content
+        if check_string_pattern(contents, "# \nAB"):
+            pass
+        else:
+            raise Exception("maze has invalid characters")
 
         # Determine height and width of maze
         contents = contents.splitlines()

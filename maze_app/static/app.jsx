@@ -33,7 +33,7 @@ const App = () => {
             // Handle the data received from the server
             console.log("Maze solution:");
             console.log(data.result);
-            setMazeSolution(data.result);
+            setMazeSolution(data);
             openModal();
         })
         .catch(error => {

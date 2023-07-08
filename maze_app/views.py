@@ -9,20 +9,29 @@ def index(request):
 def run(request):
     
     payload_data = json.loads(request.body)
-    maze = Maze(payload_data["maze"])
     
-    print("Maze:")
-    maze.print()
-
-    print("Solving...")
-    maze.solve()
-
-    print("States Explored:", maze.num_explored)
-    print("Solution:")
-    maze.print()
+    try:
+        maze = Maze(payload_data["maze"])
+        print("Maze:")
+        maze.print()
+        valid = True
+    except:
+        valid = False
+ 
+    try:
+        print("Solving...")
+        maze.solve()
+        print("States Explored:", maze.num_explored)
+        print("Solution:")
+        maze.print()
+        result=maze.stringify(show_explored=True)
+    
+    except:
+        result = None
 
     return(JsonResponse({
-        "result": maze.stringify(show_explored=True),
-        "states_explored": maze.num_explored
+        "result": result,
+        "valid": valid,
+        "states_explored": maze.num_explored if valid else 0
         }, 
         status=200))

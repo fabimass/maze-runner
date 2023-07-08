@@ -13,7 +13,13 @@ const Modal = (props) => {
                 
                 <div className="flex flex-col h-screen items-center">
                     <div className="grow"></div>
-                    <MazePrint content={props.content} />
+                    {
+                        props.content.valid ?
+                            props.content.result ?
+                                <MazePrint content={props.content.result} />
+                            : <ErrorPrint type="no_result" />
+                        : <ErrorPrint type="invalid" />
+                    }
                     <div className="grow"></div>
                 </div>
             </div>
