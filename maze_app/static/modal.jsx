@@ -16,7 +16,7 @@ const Modal = (props) => {
                     {
                         props.content.valid ?
                             props.content.result ?
-                                <MazePrint content={props.content.result} />
+                                <MazePrint content={props.content.result} width={props.content.width} height={props.content.height}/>
                             : <ErrorPrint type="no_result" />
                         : <ErrorPrint type="invalid" />
                     }

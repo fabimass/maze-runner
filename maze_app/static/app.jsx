@@ -31,6 +31,7 @@ const App = () => {
         })
         .then(data => {
             // Handle the data received from the server
+            console.log(data);
             console.log("Maze solution:");
             console.log(data.result);
             setMazeSolution(data);

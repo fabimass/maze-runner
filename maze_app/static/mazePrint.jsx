@@ -1,8 +1,6 @@
 const MazePrint = (props) => {
 
-    const vdim = props.content.split('\n').length
-    const hdim = props.content.split('\n')[0].split("").length
-    const dims = vdim * hdim
+    const dims = props.width * props.height
 
     let wall = ""
     let start = ""

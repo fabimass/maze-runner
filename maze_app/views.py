@@ -15,7 +15,8 @@ def run(request):
         print("Maze:")
         maze.print()
         valid = True
-    except:
+    except Exception as e:
+        print(e)
         valid = False
  
     try:
@@ -26,12 +27,15 @@ def run(request):
         maze.print()
         result=maze.stringify(show_explored=False)
     
-    except:
+    except Exception as e:
+        print(e)
         result = None
 
     return(JsonResponse({
         "result": result,
         "valid": valid,
-        "states_explored": maze.num_explored if valid else 0
+        "states_explored": maze.num_explored if valid else 0,
+        "height": maze.height if valid else None,
+        "width": maze.width if valid else None,
         }, 
         status=200))
