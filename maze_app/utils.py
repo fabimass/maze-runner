@@ -2,10 +2,11 @@ import sys
 import re
 
 class Node():
-    def __init__(self, state, parent, action):
-        self.state = state
-        self.parent = parent
-        self.action = action
+    def __init__(self, state, parent, action, distance):
+        self.state = state # The coordinates of the current position
+        self.parent = parent # This is the cell where the ai came from
+        self.action = action # This is the action that the ai took to arrive to this state
+        self.manhattan = distance # The Manhattan distance to the goal
 
 
 class StackFrontier():
@@ -38,6 +39,17 @@ class QueueFrontier(StackFrontier):
         else:
             node = self.frontier[0]
             self.frontier = self.frontier[1:]
+            return node
+
+
+class GreedyFrontier(StackFrontier):
+
+    def remove(self):
+        if self.empty():
+            raise Exception("empty frontier")
+        else:
+            node = min(self.frontier, key=lambda x: x.manhattan)
+            self.frontier.remove(node)
             return node
 
 
@@ -119,7 +131,7 @@ class Maze():
             print()
         print()
 
-    def stringify(self, show_explored=False):
+    def stringify(self, show_explored=False, show_distance=False):
         """Returns a string representing the maze."""
 
         solution = self.solution[1] if self.solution is not None else None
@@ -128,18 +140,26 @@ class Maze():
             if i > 0:
                 result += '\n'
             for j, col in enumerate(row):
+                if j > 0:
+                    result += ','
                 if col:
                     result += '#'
                 elif (i, j) == self.start:
-                    result += 'A'   
+                    result += 'A'    
                 elif (i, j) == self.goal:
                     result += 'B'
                 elif solution is not None and (i, j) in solution:
                     result += '*'
+                    if show_distance:
+                        result += f"{self.manhattan_distance((i, j))}"
                 elif solution is not None and show_explored and (i, j) in self.explored:
                     result += 'x'
+                    if show_distance:
+                        result += f"{self.manhattan_distance((i, j))}"
                 else:
                     result += ' '
+                    if show_distance:
+                        result += f"{self.manhattan_distance((i, j))}"
         return result
 
     def neighbors(self, state):
@@ -158,6 +178,10 @@ class Maze():
             if 0 <= r < self.height and 0 <= c < self.width and not self.walls[r][c]:
                 result.append((action, (r, c)))
         return result
+    
+    def manhattan_distance(self, state):
+        """ Calculates the Manhattan distance from a given state to the goal """
+        return abs(state[0] - self.goal[0]) + abs(state[1] - self.goal[1])
 
     def solve(self):
         """Finds a solution to maze, if one exists."""
@@ -166,8 +190,8 @@ class Maze():
         self.num_explored = 0
 
         # Initialize frontier to just the starting position
-        start = Node(state=self.start, parent=None, action=None)
-        frontier = QueueFrontier()
+        start = Node(state=self.start, parent=None, action=None, distance=self.manhattan_distance(self.start))
+        frontier = GreedyFrontier()
         frontier.add(start)
 
         # Initialize an empty explored set
@@ -203,5 +227,5 @@ class Maze():
             # Add neighbors to frontier
             for action, state in self.neighbors(node.state):
                 if not frontier.contains_state(state) and state not in self.explored:
-                    child = Node(state=state, parent=node, action=action)
+                    child = Node(state=state, parent=node, action=action, distance=self.manhattan_distance(state))
                     frontier.add(child)

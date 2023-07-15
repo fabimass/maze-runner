@@ -25,7 +25,7 @@ def run(request):
         print("States Explored:", maze.num_explored)
         print("Solution:")
         maze.print()
-        result=maze.stringify(show_explored=False)
+        result=maze.stringify(show_explored=True, show_distance=True)
     
     except Exception as e:
         print(e)
