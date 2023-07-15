@@ -84,7 +84,7 @@ class Maze():
 
         self.solution = None
 
-    def check_integrity(string, pattern):
+    def check_integrity(self, string, pattern):
         # Escape special characters in the pattern
         escaped_pattern = re.escape(pattern)
         
