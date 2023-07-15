@@ -14,11 +14,15 @@ const Modal = (props) => {
                 <div className="flex flex-col h-screen items-center">
                     <div className="grow"></div>
                     {
-                        props.content.valid ?
-                            props.content.result ?
-                                <MazePrint content={props.content.result} width={props.content.width} height={props.content.height}/>
-                            : <ErrorPrint type="no_result" />
-                        : <ErrorPrint type="invalid" />
+                        props.type == "maze" ?
+                            props.content.valid ?
+                                props.content.result ?
+                                    <MazePrint content={props.content.result} width={props.content.width} height={props.content.height}/>
+                                : <ErrorPrint type="no_result" />
+                            : <ErrorPrint type="invalid" />
+                        : props.type == "options" ?
+                            "options"
+                        : null
                     }
                     <div className="grow"></div>
                 </div>
