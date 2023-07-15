@@ -1,21 +1,6 @@
 import sys
 import re
 
-
-def check_string_pattern(string, pattern):
-    # Escape special characters in the pattern
-    escaped_pattern = re.escape(pattern)
-    
-    # Create the regular expression pattern
-    regex_pattern = f'^[{escaped_pattern}]+$'
-    
-    # Check if the string matches the pattern
-    if re.match(regex_pattern, string):
-        return True
-    else:
-        return False
-
-
 class Node():
     def __init__(self, state, parent, action):
         self.state = state
@@ -67,7 +52,7 @@ class Maze():
             raise Exception("maze must have exactly one goal")
         
         # Validate content
-        if check_string_pattern(contents, "# \nAB"):
+        if self.check_integrity(contents, "# \nAB"):
             pass
         else:
             raise Exception("maze has invalid characters")
@@ -99,6 +84,18 @@ class Maze():
 
         self.solution = None
 
+    def check_integrity(string, pattern):
+        # Escape special characters in the pattern
+        escaped_pattern = re.escape(pattern)
+        
+        # Create the regular expression pattern
+        regex_pattern = f'^[{escaped_pattern}]+$'
+        
+        # Check if the string matches the pattern
+        if re.match(regex_pattern, string):
+            return True
+        else:
+            return False
 
     def print(self):
         solution = self.solution[1] if self.solution is not None else None
@@ -165,7 +162,6 @@ class Maze():
             if 0 <= r < self.height and 0 <= c < self.width and not self.walls[r][c]:
                 result.append((action, (r, c)))
         return result
-
 
     def solve(self):
         """Finds a solution to maze, if one exists."""
