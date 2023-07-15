@@ -85,6 +85,8 @@ class Maze():
         self.solution = None
 
     def check_integrity(self, string, pattern):
+        """Checks for unallowed characters in the maze design."""
+
         # Escape special characters in the pattern
         escaped_pattern = re.escape(pattern)
         
@@ -98,6 +100,8 @@ class Maze():
             return False
 
     def print(self):
+        """Prints the maze in the console."""
+
         solution = self.solution[1] if self.solution is not None else None
         print()
         for i, row in enumerate(self.walls):
@@ -116,39 +120,31 @@ class Maze():
         print()
 
     def stringify(self, show_explored=False):
+        """Returns a string representing the maze."""
+
         solution = self.solution[1] if self.solution is not None else None
         result = ''
         for i, row in enumerate(self.walls):
             if i > 0:
                 result += '\n'
             for j, col in enumerate(row):
-                
-                # Walls
                 if col:
                     result += '#'
-
-                # Start
                 elif (i, j) == self.start:
-                    result += 'A'
-
-                # Goal    
+                    result += 'A'   
                 elif (i, j) == self.goal:
                     result += 'B'
-
-                # Solution
                 elif solution is not None and (i, j) in solution:
                     result += '*'
-
-                # Explored
                 elif solution is not None and show_explored and (i, j) in self.explored:
                     result += 'x'
-
-                # Empty cell
                 else:
                     result += ' '
         return result
 
     def neighbors(self, state):
+        "Returns the next possible moves for a given state."
+
         row, col = state
         candidates = [
             ("up", (row - 1, col)),
