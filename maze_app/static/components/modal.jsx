@@ -6,7 +6,7 @@ const Modal = (props) => {
             
             <div className="fixed inset-0 bg-gray-700 bg-opacity-75"></div>
 
-            <div className="inline-block bg-slate-900 rounded-lg overflow-hidden shadow-xl transform transition-all min-w-[95%] sm:min-w-[75%]">
+            <div className="inline-block bg-slate-900 rounded-lg overflow-y-scroll sm:overflow-hidden shadow-xl transform transition-all min-w-[95%] sm:min-w-[75%] max-w-[95%] sm:max-w-[75%]">
                 <div className="text-right pr-1">
                     <button onClick={props.closeModal}>❌</button>
                 </div>
