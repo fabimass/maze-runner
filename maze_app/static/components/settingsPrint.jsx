@@ -19,6 +19,15 @@ const SettingsPrint = (props) => {
                     <input type="checkbox" /> Show distance to the goal
                 </label>
                 <label className="text-gray-400 italic"> This will display the Manhattan distance to the goal in all the available cells </label>
+
+                <div className="flex grow"></div>
+
+                <h2 className="text-xl sm:text-2xl text-white text-left mb-5" style={{fontFamily: "Courier"}}>Maze templates:</h2>
+
+                <button style={{fontFamily: "Courier"}} className="justify-center bg-emerald-500 hover:bg-emerald-700 text-white text-xl rounded-full mx-0 sm:mx-10 my-5">MAZE 1</button>
+                <button style={{fontFamily: "Courier"}} className="justify-center bg-emerald-500 hover:bg-emerald-700 text-white text-xl rounded-full mx-0 sm:mx-10 my-5">MAZE 2</button>
+                <button style={{fontFamily: "Courier"}} className="justify-center bg-emerald-500 hover:bg-emerald-700 text-white text-xl rounded-full mx-0 sm:mx-10 my-5">MAZE 3</button>
+                <button style={{fontFamily: "Courier"}} className="justify-center bg-emerald-500 hover:bg-emerald-700 text-white text-xl rounded-full mx-0 sm:mx-10 my-5">MAZE 4</button>
             </div>
         </div>
         <div className="h-[120px]"></div>  
