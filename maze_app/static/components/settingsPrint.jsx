@@ -27,8 +27,13 @@ const SettingsPrint = (props) => {
                     </div>
                     <label className="text-gray-400 italic text-xs sm:text-base"> The AI will evaluate each possible path based on the distance to the goal plus the number of movements needed to get there, and then will choose the one with the lowest value </label>
                 </form>
+
+                <div className="invisible sm:visible flex grow"></div>
+                <button style={{fontFamily: "Courier"}} className="invisible sm:visible justify-center bg-emerald-500 hover:bg-emerald-700 text-white text-base sm:text-xl rounded-full mx-0 sm:mx-10 my-2 sm:my-5">Ready!</button>
+                <div className="invisible sm:visible flex grow"></div>
+
             </div>
-            <div className="flex flex-col w-[100%] sm:w-[50%] px-5 sm:px-10 mt-10 sm:mt-0">
+            <div className="flex flex-col w-[100%] sm:w-[50%] px-5 sm:px-10">
                 <h2 className="text-base sm:text-2xl text-white text-left" style={{fontFamily: "Courier"}}>Miscellaneous:</h2>
                 <form className="flex flex-col">
                     <div className="mt-3 sm:mt-10 text-left">
@@ -47,10 +52,13 @@ const SettingsPrint = (props) => {
 
                 <h2 className="text-base sm:text-2xl text-white text-left mb-3 sm:mb-5 mt-10 sm:mt-0" style={{fontFamily: "Courier"}}>Maze templates:</h2>
 
-                <button style={{fontFamily: "Courier"}} className="justify-center bg-emerald-500 hover:bg-emerald-700 text-white text-base sm:text-xl rounded-full mx-0 sm:mx-10 my-2 sm:my-5">MAZE 1</button>
-                <button style={{fontFamily: "Courier"}} className="justify-center bg-emerald-500 hover:bg-emerald-700 text-white text-base sm:text-xl rounded-full mx-0 sm:mx-10 my-2 sm:my-5">MAZE 2</button>
-                <button style={{fontFamily: "Courier"}} className="justify-center bg-emerald-500 hover:bg-emerald-700 text-white text-base sm:text-xl rounded-full mx-0 sm:mx-10 my-2 sm:my-5">MAZE 3</button>
-                <button style={{fontFamily: "Courier"}} className="justify-center bg-emerald-500 hover:bg-emerald-700 text-white text-base sm:text-xl rounded-full mx-0 sm:mx-10 my-2 sm:my-5">MAZE 4</button>
+                <button style={{fontFamily: "Courier"}} className="justify-center bg-slate-500 hover:bg-slate-700 text-white text-base sm:text-xl rounded-full mx-0 sm:mx-10 my-2 sm:my-5">MAZE 1</button>
+                <button style={{fontFamily: "Courier"}} className="justify-center bg-slate-500 hover:bg-slate-700 text-white text-base sm:text-xl rounded-full mx-0 sm:mx-10 my-2 sm:my-5">MAZE 2</button>
+                <button style={{fontFamily: "Courier"}} className="justify-center bg-slate-500 hover:bg-slate-700 text-white text-base sm:text-xl rounded-full mx-0 sm:mx-10 my-2 sm:my-5">MAZE 3</button>
+                <button style={{fontFamily: "Courier"}} className="justify-center bg-slate-500 hover:bg-slate-700 text-white text-base sm:text-xl rounded-full mx-0 sm:mx-10 mt-2 mb-10 sm:my-5">MAZE 4</button>
+
+                <button style={{fontFamily: "Courier"}} className="visible sm:invisible justify-center bg-emerald-500 hover:bg-emerald-700 text-white text-base sm:text-xl rounded-full mx-0 my-2 sm:my-0">Ready!</button>
+
             </div>
         </div>
         <div className="h-[120px]"></div>  
