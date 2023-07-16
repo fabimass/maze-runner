@@ -50,13 +50,13 @@ const App = () => {
         <div className="flex my-2 w-[95%] sm:w-[50%] justify-center">
             <button onClick={runMaze} style={{fontFamily: "Courier"}} className="grow sm:grow-0 sm:w-[100px] flex mr-1 justify-center sm:my-5 py-2 bg-slate-900 text-white text-xl rounded-full">
                 <div className="flex">
-                    <img src={"/static/runner-white.png"} alt="runner" width={28} height={28} className="mr-1"/>
+                    <img src={"/static/img/runner.png"} alt="runner icon" width={28} height={28} className="mr-1"/>
                     <span>RUN</span>
                 </div>
             </button>
             <button onClick={openOptions} style={{fontFamily: "Courier"}} className="grow sm:grow-0 sm:w-[100px] flex ml-1 justify-center sm:my-5 py-2 bg-slate-900 text-white text-xl rounded-full">
                 <div className="flex">
-                    <img src={"/static/gears.png"} alt="runner" width={28} height={28} className="mr-1"/>
+                    <img src={"/static/img/gears.png"} alt="gear icon" width={28} height={28} className="mr-1"/>
                     <span>SET</span>
                 </div>
             </button>
