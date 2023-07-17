@@ -1,5 +1,6 @@
 const SettingsPrint = (props) => {
     
+    const dispatch = ReactRedux.useDispatch()
     const algorithm = ReactRedux.useSelector((state) => state.algorithm)
     
     return <div className="h-[100%] w-[100%] flex flex-col">
@@ -9,22 +10,22 @@ const SettingsPrint = (props) => {
                 <h2 className="text-base sm:text-2xl text-white text-left" style={{fontFamily: "Courier"}}>AI Algorithm:</h2>
                 <form className="flex flex-col">
                     <div className="mt-3 sm:mt-10 text-left">
-                        <input type="radio" id="dfs" name="ai_algorithm" className="peer/dfs accent-emerald-500" value="dfs"/>
+                        <input type="radio" id="dfs" name="ai_algorithm" className="peer/dfs accent-emerald-500" value="dfs" checked={algorithm=="dfs"} onClick={() => dispatch({ type: 'select-dfs' })}/>
                         <label for="dfs" className="peer-checked/dfs:text-emerald-500 text-white text-sm sm:text-base" style={{fontFamily: "Courier"}}> Depth-First Search </label>
                     </div>
                     <label className="text-gray-400 italic text-xs sm:text-base"> The AI will explore as far as possible along each branch before backtracking </label>
                     <div className="mt-5 sm:mt-10 text-left">
-                        <input type="radio" id="bfs" name="ai_algorithm" className="peer/bfs accent-emerald-500" value="bfs"/>
+                        <input type="radio" id="bfs" name="ai_algorithm" className="peer/bfs accent-emerald-500" value="bfs" checked={algorithm=="bfs"} onClick={() => dispatch({ type: 'select-bfs' })}/>
                         <label for="bfs" className="peer-checked/bfs:text-emerald-500 text-white text-sm sm:text-base" style={{fontFamily: "Courier"}}> Breadth-First Search </label>
                     </div>
                     <label className="text-gray-400 italic text-xs sm:text-base"> The AI will explore all the nodes at the present depth prior to moving on to the next depth level </label>
                     <div className="mt-5 sm:mt-10 text-left">
-                        <input type="radio" id="gbfs" name="ai_algorithm" className="peer/gbfs accent-emerald-500" value="gbfs"/>
+                        <input type="radio" id="gbfs" name="ai_algorithm" className="peer/gbfs accent-emerald-500" value="gbfs" checked={algorithm=="gbfs"} onClick={() => dispatch({ type: 'select-gbfs' })}/>
                         <label for="gbfs" className="peer-checked/gbfs:text-emerald-500 text-white text-sm sm:text-base" style={{fontFamily: "Courier"}}> Greedy Best-First Search </label>
                     </div>
                     <label className="text-gray-400 italic text-xs sm:text-base"> The AI will evaluate the distance to the goal of each possible path, choosing the one with the lowest distance </label>
                     <div className="mt-5 sm:mt-10 text-left">
-                        <input type="radio" id="astar" name="ai_algorithm" className="peer/astar accent-emerald-500" value="astar"/>
+                        <input type="radio" id="astar" name="ai_algorithm" className="peer/astar accent-emerald-500" value="astar" checked={algorithm=="astar"} onClick={() => dispatch({ type: 'select-astar' })}/>
                         <label for="astar" className="peer-checked/astar:text-emerald-500 text-white text-sm sm:text-base" style={{fontFamily: "Courier"}}> A* Search </label>
                     </div>
                     <label className="text-gray-400 italic text-xs sm:text-base"> The AI will evaluate each possible path based on the distance to the goal plus the number of movements needed to get there, and then will choose the one with the lowest value </label>
