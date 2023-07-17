@@ -1,6 +1,6 @@
 const SettingsPrint = (props) => {
     
-    
+    const algorithm = ReactRedux.useSelector((state) => state.algorithm)
     
     return <div className="h-[100%] w-[100%] flex flex-col">
         <h1 className="text-2xl sm:text-6xl my-0 sm:my-5 text-white" style={{fontFamily: "Courier"}}>SETTINGS MENU</h1>

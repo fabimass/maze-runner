@@ -8,11 +8,14 @@
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/redux@latest/dist/redux.min.js"></script>
+    <script src="https://unpkg.com/react-redux@latest/dist/react-redux.min.js"></script>
     <script>var CSRF_TOKEN = '{{ csrf_token }}';</script>
     <title>Maze Runner</title>
   </head>
   <body style="background-image: url('static/img/background.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
     <div id="app"></div>
+    <script src="{% static 'services/store.js' %}"></script>
     <script src="{% static 'components/mazePrint.jsx' %}" type="text/babel"></script>
     <script src="{% static 'components/settingsPrint.jsx' %}" type="text/babel"></script>
     <script src="{% static 'components/errorPrint.jsx' %}" type="text/babel"></script>
