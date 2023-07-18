@@ -21,7 +21,8 @@ const MazeDesign = () => {
                 'X-CSRFToken': CSRF_TOKEN
             },
             body: JSON.stringify({
-                maze: mazeDesign
+                maze: mazeDesign,
+                algorithm: algorithm
             }),
         })
         .then(response => {

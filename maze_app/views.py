@@ -21,7 +21,7 @@ def run(request):
  
     try:
         print("Solving...")
-        maze.solve()
+        maze.solve(payload_data["algorithm"])
         print("States Explored:", maze.num_explored)
         print("Solution:")
         maze.print()

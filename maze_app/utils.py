@@ -183,7 +183,7 @@ class Maze():
         """ Calculates the Manhattan distance from a given state to the goal """
         return abs(state[0] - self.goal[0]) + abs(state[1] - self.goal[1])
 
-    def solve(self):
+    def solve(self, algorithm):
         """Finds a solution to maze, if one exists."""
 
         # Keep track of number of states explored
@@ -191,7 +191,18 @@ class Maze():
 
         # Initialize frontier to just the starting position
         start = Node(state=self.start, parent=None, action=None, distance=self.manhattan_distance(self.start))
-        frontier = GreedyFrontier()
+        
+        if algorithm == 'dfs':
+            frontier = StackFrontier()
+        elif algorithm == 'bfs':
+            frontier = QueueFrontier()
+        elif algorithm == 'gbfs':
+            frontier = GreedyFrontier()
+        elif algorithm == 'astar':
+            frontier = StackFrontier()
+        else:
+            frontier = StackFrontier()
+        
         frontier.add(start)
 
         # Initialize an empty explored set
