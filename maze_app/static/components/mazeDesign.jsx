@@ -6,8 +6,6 @@ const MazeDesign = () => {
     const showDistance = ReactRedux.useSelector((state) => state.showDistance)
     const maze = ReactRedux.useSelector((state) => state.maze)
     
-    //const [mazeDesign, setMazeDesign] = React.useState("#####B#\n##### #\n####  #\n#### ##\n     ##\nA######");
-    const [mazeSolution, setMazeSolution] = React.useState();
     const [showMaze, setShowMaze] = React.useState(false);
     const [showOptions, setShowOptions] = React.useState(false);
 
@@ -43,7 +41,7 @@ const MazeDesign = () => {
         })
         .then(data => {
             // Handle the data received from the server
-            setMazeSolution(data);
+            dispatch({type: "update-solution", payload: data});
             openMaze();
         })
         .catch(error => {
@@ -71,7 +69,7 @@ const MazeDesign = () => {
                 </button>
             </div>
             
-            { showMaze ? <Modal type="maze" content={mazeSolution} closeModal={closeMaze} /> : null }
+            { showMaze ? <Modal type="maze" closeModal={closeMaze} /> : null }
             { showOptions ? <Modal type="options" closeModal={closeOptions} /> : null }  
         </div>
 }

@@ -2,7 +2,8 @@ const initialState = {
     algorithm: "dfs",
     showExplored: false,
     showDistance: false,
-    maze: ""
+    maze: "",
+    solution: null
 };
 
 function rootReducer(state = initialState, action) {
@@ -23,6 +24,8 @@ function rootReducer(state = initialState, action) {
         return {...state, showExplored: !state.showExplored}
     case 'update-maze':
         return {...state, maze: action.payload}
+    case 'update-solution':
+        return {...state, solution: action.payload}
     default:
         return state
   }

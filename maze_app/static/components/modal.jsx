@@ -1,6 +1,8 @@
 
 const Modal = (props) => {
     
+    const mazeSolution = ReactRedux.useSelector((state) => state.solution)
+
     return <div className="fixed inset-0">
         <div className="flex justify-center max-h-[100%] py-4 px-4 text-center">
             
@@ -15,9 +17,9 @@ const Modal = (props) => {
                     <div className="grow"></div>
                     {
                         props.type == "maze" ?
-                            props.content.valid ?
-                                props.content.result ?
-                                    <MazePrint content={props.content.result} width={props.content.width} height={props.content.height}/>
+                            mazeSolution.valid ?
+                                mazeSolution.result ?
+                                    <MazePrint />
                                 : <ErrorPrint type="no_result" />
                             : <ErrorPrint type="invalid" />
                         : props.type == "options" ?

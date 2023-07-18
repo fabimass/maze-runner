@@ -1,6 +1,7 @@
-const MazePrint = (props) => {
+const MazePrint = () => {
 
-    const dims = props.width * props.height
+    const mazeSolution = ReactRedux.useSelector((state) => state.solution)
+    const dims = mazeSolution.width * mazeSolution.height
 
     let wall_cell_style = ""
     let start_cell_style = ""
@@ -38,8 +39,8 @@ const MazePrint = (props) => {
         <h1 className="text-2xl sm:text-6xl my-0 sm:my-5 text-emerald-500" style={{fontFamily: "Courier"}}>Solved!</h1>
         <div className="grow"></div>
         <div className="mx-auto">
-        { props.content ?
-            props.content.split('\n').map(
+        { mazeSolution.result ?
+            mazeSolution.result.split('\n').map(
                 row => <div className="flex">
                     {row.split(",").map(cell => {
                         const isSolution = cell.match(/\*(\d*)/)
