@@ -4,6 +4,10 @@ const SettingsPrint = (props) => {
     const algorithm = ReactRedux.useSelector((state) => state.algorithm)
     const showExplored = ReactRedux.useSelector((state) => state.showExplored)
     const showDistance = ReactRedux.useSelector((state) => state.showDistance)
+    const maze = ReactRedux.useSelector((state) => state.maze)
+
+    const first_maze = "#####B#\n##### #\n####  #\n#### ##\n     ##\nA######"
+    const second_maze = "#          B\n# ######### \n# #       # \n# # ##### # \n#   #     # \n### # ##### \nA   #       "
     
     return <div className="h-[100%] w-[100%] flex flex-col">
         <h1 className="text-2xl sm:text-6xl my-0 sm:my-5 text-white" style={{fontFamily: "Courier"}}>SETTINGS MENU</h1>
