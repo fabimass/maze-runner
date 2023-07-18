@@ -28,7 +28,7 @@ const SettingsPrint = (props) => {
                         <input type="radio" id="astar" name="ai_algorithm" className="peer/astar accent-emerald-500" value="astar" checked={algorithm=="astar"} onClick={() => dispatch({ type: 'select-astar' })}/>
                         <label for="astar" className="peer-checked/astar:text-emerald-500 text-white text-sm sm:text-base" style={{fontFamily: "Courier"}}> A* Search </label>
                     </div>
-                    <label className="text-gray-400 italic text-xs sm:text-base"> The AI will evaluate each possible path based on the distance to the goal plus the number of movements needed to get there, and then will choose the one with the lowest value </label>
+                    <label className="text-gray-400 italic text-xs sm:text-base"> The AI will evaluate not only the estimated distance to the goal, but also how far it had to travel to reach the current point </label>
                 </form>
 
                 <div className="invisible sm:visible flex grow"></div>

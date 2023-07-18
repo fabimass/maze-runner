@@ -7,6 +7,7 @@ class Node():
         self.parent = parent # This is the cell where the ai came from
         self.action = action # This is the action that the ai took to arrive to this state
         self.manhattan = distance # The Manhattan distance to the goal
+        self.movements = parent.movements + 1 if parent is not None else 0 # The number of movements taken from the start to reach this state
 
 
 class StackFrontier():
@@ -49,6 +50,17 @@ class GreedyFrontier(StackFrontier):
             raise Exception("empty frontier")
         else:
             node = min(self.frontier, key=lambda x: x.manhattan)
+            self.frontier.remove(node)
+            return node
+        
+
+class StarFrontier(StackFrontier):
+
+    def remove(self):
+        if self.empty():
+            raise Exception("empty frontier")
+        else:
+            node = min(self.frontier, key=lambda x: (x.manhattan + x.movements))
             self.frontier.remove(node)
             return node
 
@@ -199,7 +211,7 @@ class Maze():
         elif algorithm == 'gbfs':
             frontier = GreedyFrontier()
         elif algorithm == 'astar':
-            frontier = StackFrontier()
+            frontier = StarFrontier()
         else:
             frontier = StackFrontier()
         
