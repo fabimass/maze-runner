@@ -9,7 +9,7 @@ def index(request):
 def run(request):
     
     payload_data = json.loads(request.body)
-    
+
     try:
         maze = Maze(payload_data["maze"])
         print("Maze:")
@@ -25,7 +25,7 @@ def run(request):
         print("States Explored:", maze.num_explored)
         print("Solution:")
         maze.print()
-        result=maze.stringify(show_explored=True, show_distance=True)
+        result=maze.stringify(show_explored=payload_data["showExplored"], show_distance=payload_data["showDistance"])
     
     except Exception as e:
         print(e)

@@ -1,5 +1,7 @@
 const initialState = {
-    algorithm: "dfs"
+    algorithm: "dfs",
+    showExplored: false,
+    showDistance: false
 };
 
 function rootReducer(state = initialState, action) {
@@ -14,6 +16,10 @@ function rootReducer(state = initialState, action) {
         return {...state, algorithm: "gbfs"}
     case 'select-astar':
         return {...state, algorithm: "astar"}
+    case 'toggle-show-distance':
+        return {...state, showDistance: !state.showDistance}
+    case 'toggle-show-explored':
+        return {...state, showExplored: !state.showExplored}
     default:
         return state
   }

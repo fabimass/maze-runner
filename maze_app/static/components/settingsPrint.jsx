@@ -2,6 +2,8 @@ const SettingsPrint = (props) => {
     
     const dispatch = ReactRedux.useDispatch()
     const algorithm = ReactRedux.useSelector((state) => state.algorithm)
+    const showExplored = ReactRedux.useSelector((state) => state.showExplored)
+    const showDistance = ReactRedux.useSelector((state) => state.showDistance)
     
     return <div className="h-[100%] w-[100%] flex flex-col">
         <h1 className="text-2xl sm:text-6xl my-0 sm:my-5 text-white" style={{fontFamily: "Courier"}}>SETTINGS MENU</h1>
@@ -40,13 +42,13 @@ const SettingsPrint = (props) => {
                 <h2 className="text-base sm:text-2xl text-white text-left" style={{fontFamily: "Courier"}}>Miscellaneous:</h2>
                 <form className="flex flex-col">
                     <div className="mt-3 sm:mt-10 text-left">
-                        <input type="checkbox" />
-                        <label className="text-white text-sm sm:text-base" style={{fontFamily: "Courier"}}> Show explored cells </label>
+                        <input type="checkbox" className="peer/show-explored accent-emerald-500" checked={showExplored} onClick={() => dispatch({ type: 'toggle-show-explored' })}/>
+                        <label className="peer-checked/show-explored:text-emerald-500 text-white text-sm sm:text-base" style={{fontFamily: "Courier"}}> Show explored cells </label>
                     </div>
                     <label className="text-gray-400 italic text-xs sm:text-base"> This will show the cells that were explored by the AI but that ultimately did not lead to the goal </label>
                     <div className="mt-5 sm:mt-10 text-left">
-                        <input type="checkbox" />
-                        <label className="text-white text-sm sm:text-base" style={{fontFamily: "Courier"}}> Show distance to the goal </label>
+                        <input type="checkbox" className="peer/show-distance accent-emerald-500" checked={showDistance} onClick={() => dispatch({ type: 'toggle-show-distance' })}/>
+                        <label className="peer-checked/show-distance:text-emerald-500 text-white text-sm sm:text-base" style={{fontFamily: "Courier"}}> Show distance to the goal </label>
                     </div>
                     <label className="text-gray-400 italic text-xs sm:text-base"> This will display the Manhattan distance to the goal in all the available cells </label>
                 </form>

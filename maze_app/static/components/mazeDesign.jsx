@@ -1,6 +1,8 @@
 const MazeDesign = () => {
 
     const algorithm = ReactRedux.useSelector((state) => state.algorithm)
+    const showExplored = ReactRedux.useSelector((state) => state.showExplored)
+    const showDistance = ReactRedux.useSelector((state) => state.showDistance)
     
     const [mazeDesign, setMazeDesign] = React.useState("#####B#\n##### #\n####  #\n#### ##\n     ##\nA######");
     const [mazeSolution, setMazeSolution] = React.useState();
@@ -22,7 +24,9 @@ const MazeDesign = () => {
             },
             body: JSON.stringify({
                 maze: mazeDesign,
-                algorithm: algorithm
+                algorithm: algorithm,
+                showDistance: showDistance,
+                showExplored: showExplored
             }),
         })
         .then(response => {
