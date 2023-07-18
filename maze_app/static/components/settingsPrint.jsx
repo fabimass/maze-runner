@@ -32,7 +32,7 @@ const SettingsPrint = (props) => {
                 </form>
 
                 <div className="invisible sm:visible flex grow"></div>
-                <button style={{fontFamily: "Courier"}} className="invisible sm:visible justify-center bg-emerald-500 hover:bg-emerald-700 text-white text-base sm:text-xl rounded-full mx-0 sm:mx-10 my-2 sm:my-5">Ready!</button>
+                <button onClick={props.onReady} style={{fontFamily: "Courier"}} className="invisible sm:visible justify-center bg-emerald-500 hover:bg-emerald-700 text-white text-base sm:text-xl rounded-full mx-0 sm:mx-10 my-2 sm:my-5">Ready!</button>
                 <div className="invisible sm:visible flex grow"></div>
 
             </div>
@@ -60,7 +60,7 @@ const SettingsPrint = (props) => {
                 <button style={{fontFamily: "Courier"}} className="justify-center bg-slate-500 hover:bg-slate-700 text-white text-base sm:text-xl rounded-full mx-0 sm:mx-10 my-2 sm:my-5">MAZE 3</button>
                 <button style={{fontFamily: "Courier"}} className="justify-center bg-slate-500 hover:bg-slate-700 text-white text-base sm:text-xl rounded-full mx-0 sm:mx-10 mt-2 mb-10 sm:my-5">MAZE 4</button>
 
-                <button style={{fontFamily: "Courier"}} className="visible sm:invisible justify-center bg-emerald-500 hover:bg-emerald-700 text-white text-base sm:text-xl rounded-full mx-0 my-2 sm:my-0">Ready!</button>
+                <button onClick={props.onReady} style={{fontFamily: "Courier"}} className="visible sm:invisible justify-center bg-emerald-500 hover:bg-emerald-700 text-white text-base sm:text-xl rounded-full mx-0 my-2 sm:my-0">Ready!</button>
 
             </div>
         </div>

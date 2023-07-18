@@ -21,7 +21,7 @@ const Modal = (props) => {
                                 : <ErrorPrint type="no_result" />
                             : <ErrorPrint type="invalid" />
                         : props.type == "options" ?
-                            <SettingsPrint />
+                            <SettingsPrint onReady={props.closeModal} />
                         : null
                     }
                     <div className="grow"></div>
