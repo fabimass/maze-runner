@@ -8,6 +8,8 @@ const SettingsPrint = (props) => {
 
     const first_maze = "#####B#\n##### #\n####  #\n#### ##\n     ##\nA######"
     const second_maze = "#          B\n# ######### \n# #       # \n# # ##### # \n#   #     # \n### # ##### \nA   #       "
+    const third_maze = "##    #\n## ## #\n#B #  #\n# ## ##\n     ##\nA######"
+    const fourth_maze = "###                 #########\n#   ###################   # #\n# ####                # # # #\n# ################### # # # #\n#                     # # # #\n##################### # # # #\n#   ##                # # # #\n# # ## ### ## ######### # # #\n# #    #   ##B#         # # #\n# # ## ################ # # #\n### ##             #### # # #\n### ############## ## # # # #\n###             ##    # # # #\n###### ######## ####### # # #\n###### ####             #   #\nA      ######################"
     
     return <div className="h-[100%] w-[100%] flex flex-col">
         <h1 className="text-2xl sm:text-6xl my-0 sm:my-5 text-white" style={{fontFamily: "Courier"}}>SETTINGS MENU</h1>
@@ -61,10 +63,10 @@ const SettingsPrint = (props) => {
 
                 <h2 className="text-base sm:text-2xl text-white text-left mb-3 sm:mb-5 mt-10 sm:mt-0" style={{fontFamily: "Courier"}}>Maze templates:</h2>
 
-                <button style={{fontFamily: "Courier"}} className="justify-center bg-slate-500 hover:bg-slate-700 text-white text-base sm:text-xl rounded-full mx-0 sm:mx-10 my-2 sm:my-5">MAZE 1</button>
-                <button style={{fontFamily: "Courier"}} className="justify-center bg-slate-500 hover:bg-slate-700 text-white text-base sm:text-xl rounded-full mx-0 sm:mx-10 my-2 sm:my-5">MAZE 2</button>
-                <button style={{fontFamily: "Courier"}} className="justify-center bg-slate-500 hover:bg-slate-700 text-white text-base sm:text-xl rounded-full mx-0 sm:mx-10 my-2 sm:my-5">MAZE 3</button>
-                <button style={{fontFamily: "Courier"}} className="justify-center bg-slate-500 hover:bg-slate-700 text-white text-base sm:text-xl rounded-full mx-0 sm:mx-10 mt-2 mb-10 sm:my-5">MAZE 4</button>
+                <button onClick={() => dispatch({type: "update-maze", payload: first_maze})} style={{fontFamily: "Courier"}} className={(maze==first_maze) ? "justify-center bg-emerald-500 hover:bg-emerald-700 text-white text-base sm:text-xl rounded-full mx-0 sm:mx-10 my-2 sm:my-5" : "justify-center bg-slate-500 hover:bg-slate-700 text-white text-base sm:text-xl rounded-full mx-0 sm:mx-10 my-2 sm:my-5"}>MAZE 1</button>
+                <button onClick={() => dispatch({type: "update-maze", payload: second_maze})} style={{fontFamily: "Courier"}} className={(maze==second_maze) ? "justify-center bg-emerald-500 hover:bg-emerald-700 text-white text-base sm:text-xl rounded-full mx-0 sm:mx-10 my-2 sm:my-5" : "justify-center bg-slate-500 hover:bg-slate-700 text-white text-base sm:text-xl rounded-full mx-0 sm:mx-10 my-2 sm:my-5"}>MAZE 2</button>
+                <button onClick={() => dispatch({type: "update-maze", payload: third_maze})} style={{fontFamily: "Courier"}} className={(maze==third_maze) ? "justify-center bg-emerald-500 hover:bg-emerald-700 text-white text-base sm:text-xl rounded-full mx-0 sm:mx-10 my-2 sm:my-5" : "justify-center bg-slate-500 hover:bg-slate-700 text-white text-base sm:text-xl rounded-full mx-0 sm:mx-10 my-2 sm:my-5"}>MAZE 3</button>
+                <button onClick={() => dispatch({type: "update-maze", payload: fourth_maze})} style={{fontFamily: "Courier"}} className={(maze==fourth_maze) ? "justify-center bg-emerald-500 hover:bg-emerald-700 text-white text-base sm:text-xl rounded-full mx-0 sm:mx-10 my-2 sm:my-5" : "justify-center bg-slate-500 hover:bg-slate-700 text-white text-base sm:text-xl rounded-full mx-0 sm:mx-10 my-2 sm:my-5"}>MAZE 4</button>
 
                 <button onClick={props.onReady} style={{fontFamily: "Courier"}} className="visible sm:invisible justify-center bg-emerald-500 hover:bg-emerald-700 text-white text-base sm:text-xl rounded-full mx-0 my-2 sm:my-0">Ready!</button>
 
